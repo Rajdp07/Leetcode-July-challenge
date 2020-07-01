@@ -1,0 +1,18 @@
+class Solution {
+    public int arrangeCoins(int n) {
+        //use long to avoid overflow
+        long l = 0;
+        long r = n;
+        long m;
+        while (l <= r) {
+		//to avoid overflow
+            m = l + (r - l) / 2;
+			//instead of writing ((m * m + m) <= 2 * n)
+            if ((m * m + m) / 2 <= n) l = m + 1;
+            else r = m - 1;
+        }
+		//cast back to int
+        return (int)(l - 1);
+        
+    }
+}
